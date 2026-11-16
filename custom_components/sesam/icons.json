@@ -8,6 +8,9 @@
     },
     "button": {
       "open": { "default": "mdi:door-open" }
+    },
+    "image": {
+      "qr_code": { "default": "mdi:qrcode" }
     }
   },
   "services": {

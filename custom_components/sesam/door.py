@@ -14,6 +14,7 @@ from fritzconnection.core.exceptions import (
     FritzConnectionException,
     FritzServiceError,
 )
+from fritzconnection.lib.fritzwlan import FritzWLAN
 
 from .const import LOGGER
 
@@ -58,6 +59,12 @@ class Box:
         return FritzConnection.call_action(
             self._conn, service, action, arguments=arguments
         )
+
+    def qr_code(self, service: str) -> bytes:
+        """Return a PNG of the QR code that lets a phone join this Wi-Fi."""
+        number = int(service.removeprefix("WLANConfiguration"))
+        wifi = FritzWLAN(fc=self._conn, service=number)
+        return wifi.get_wifi_qr_code("png", border=2).getvalue()
 
     def inputs(self, service: str, action: str) -> list[str]:
         """Return the names of the arguments an action takes."""

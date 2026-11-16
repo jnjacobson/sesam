@@ -13,6 +13,7 @@ A FRITZ!Box can restrict its Wi-Fi to the devices it already knows (*WLAN > Sich
 
 - **Button *Open*** (`button.sesam_open`): switches the restriction off and, after five minutes, back on. Pressing it again starts the five minutes anew.
 - **Switch *MAC filter*** (`switch.sesam_mac_filter`): shows the restriction and switches it for good. Its attribute `closes_at` says when a running opening ends.
+- **Image *QR code*** (`image.sesam_qr_code`): the QR code a phone scans to join the Wi-Fi, like the one FRITZ!Box Tools offers for the guest network.
 - **Action `sesam.open`**: like the button, with an optional `minutes` (1 to 120).
 
 The five minutes can be changed in the integration's options.

@@ -31,6 +31,9 @@
     },
     "button": {
       "open": { "name": "Öffne dich" }
+    },
+    "image": {
+      "qr_code": { "name": "QR-Code" }
     }
   },
   "services": {

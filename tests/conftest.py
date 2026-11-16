@@ -73,6 +73,9 @@ class FakeBox:
     def wifi_services(self) -> list[str]:
         return sorted(self.wifi)
 
+    def qr_code(self, service: str) -> bytes:
+        return f"PNG of {self.wifi[service]['info']['NewSSID']}".encode()
+
     def inputs(self, service: str, action: str) -> list[str]:
         assert action == "SetConfig"
         return list(self.set_config_inputs)

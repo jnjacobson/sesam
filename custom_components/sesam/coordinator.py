@@ -96,6 +96,13 @@ class SesamCoordinator(DataUpdateCoordinator[bool]):
         except (HomeAssistantError, *BOX_ERRORS) as err:
             raise UpdateFailed(str(err)) from err
 
+    async def async_qr_code(self) -> bytes:
+        """Return a PNG of the QR code that lets a phone join the home Wi-Fi."""
+        # The bands of one home network share name and password; any one will do.
+        return await self.hass.async_add_executor_job(
+            self._box().qr_code, self._bands[0]
+        )
+
     async def async_open(self, minutes: int | None = None) -> None:
         """Switch the filter off now and back on after the given minutes."""
         if minutes is None:

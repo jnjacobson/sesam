@@ -10,11 +10,13 @@ from pytest_homeassistant_custom_component.common import (
     MockConfigEntry,
     async_fire_time_changed,
 )
+from pytest_homeassistant_custom_component.typing import ClientSessionGenerator
 
 from .conftest import GUEST, MAIN_5, MAIN_24, FakeBox
 
 SWITCH = "switch.sesam_mac_filter"
 BUTTON = "button.sesam_open"
+QR_CODE = "image.sesam_qr_code"
 
 
 async def press(hass: HomeAssistant) -> None:
@@ -212,3 +214,14 @@ async def test_box_without_a_home_wifi_filter_is_not_set_up(
     await hass.config_entries.async_setup(sesam_entry.entry_id)
 
     assert hass.states.get(SWITCH) is None
+
+
+async def test_qr_code_is_the_one_of_the_home_wifi(
+    hass: HomeAssistant, sesam: MockConfigEntry, hass_client: ClientSessionGenerator
+) -> None:
+    client = await hass_client()
+
+    response = await client.get(f"/api/image_proxy/{QR_CODE}")
+
+    assert response.status == 200
+    assert await response.read() == "PNG of Kükennetz".encode()
