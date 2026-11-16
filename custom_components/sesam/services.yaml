@@ -1,0 +1,8 @@
+open:
+  fields:
+    minutes:
+      selector:
+        number:
+          min: 1
+          max: 120
+          unit_of_measurement: min

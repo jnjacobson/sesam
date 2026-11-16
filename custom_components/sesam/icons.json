@@ -1,0 +1,16 @@
+{
+  "entity": {
+    "switch": {
+      "mac_filter": {
+        "default": "mdi:door-closed-lock",
+        "state": { "off": "mdi:door-open" }
+      }
+    },
+    "button": {
+      "open": { "default": "mdi:door-open" }
+    }
+  },
+  "services": {
+    "open": { "service": "mdi:door-open" }
+  }
+}

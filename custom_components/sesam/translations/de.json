@@ -1,0 +1,56 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "description": "Sesam nutzt die Verbindung der Integration FRITZ!Box Tools und braucht keine eigenen Zugangsdaten.",
+        "data": { "fritz_entry_id": "FRITZ!Box" }
+      }
+    },
+    "error": {
+      "cannot_connect": "Die FRITZ!Box hat nicht geantwortet.",
+      "unsupported": "Diese FRITZ!Box bietet den MAC-Filter nicht über TR-064 an."
+    },
+    "abort": {
+      "no_fritz": "Richte zuerst die Integration FRITZ!Box Tools ein.",
+      "single_instance_allowed": "Sesam ist schon eingerichtet."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "data": { "minutes": "Minuten, die das WLAN offen bleibt" }
+      }
+    }
+  },
+  "entity": {
+    "switch": {
+      "mac_filter": {
+        "name": "MAC-Filter",
+        "state_attributes": { "closes_at": { "name": "Schließt um" } }
+      }
+    },
+    "button": {
+      "open": { "name": "Öffne dich" }
+    }
+  },
+  "services": {
+    "open": {
+      "name": "Öffnen",
+      "description": "Schaltet den MAC-Filter aus und nach einer Weile wieder ein.",
+      "fields": {
+        "minutes": {
+          "name": "Minuten",
+          "description": "Wie lange das WLAN offen bleibt. Ohne Angabe gilt die eingestellte Zeit."
+        }
+      }
+    }
+  },
+  "exceptions": {
+    "fritz_not_loaded": { "message": "Die Integration FRITZ!Box Tools ist nicht geladen." },
+    "unsupported": { "message": "Diese FRITZ!Box bietet den MAC-Filter nicht über TR-064 an." },
+    "unsupported_write": { "message": "Die FRITZ!Box kann den MAC-Filter so nicht schalten: {error}" },
+    "not_applied": { "message": "Die FRITZ!Box hat die Änderung angenommen, aber der MAC-Filter hat nicht umgeschaltet." },
+    "box_error": { "message": "Die FRITZ!Box hat die Änderung abgelehnt oder nicht geantwortet: {error}" },
+    "not_set_up": { "message": "Sesam ist nicht eingerichtet." }
+  }
+}
