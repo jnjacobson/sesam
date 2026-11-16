@@ -6,9 +6,6 @@ Opens a FRITZ!Box Wi-Fi to new devices for a few minutes, from Home Assistant.
 
 A FRITZ!Box can restrict its Wi-Fi to the devices it already knows (*WLAN > Sicherheit > WLAN-Zugang auf die bekannten WLAN-Geräte beschränken*). With that on, a new device stays out even with the right password, and letting it in means logging in to the box and switching the restriction off and on again. sesam does that with one button.
 
-> [!WARNING]
-> Not yet tested against a real FRITZ!Box. The box may restart its Wi-Fi for a moment when the restriction is switched.
-
 ## What you get
 
 - **Button *Open*** (`button.sesam_open`): switches the restriction off and, after five minutes, back on. Pressing it again starts the five minutes anew.
